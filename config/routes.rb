@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/users', to: 'pages#users', as: :users
-  resources 'friendships', only: %i( create destroy )
+  post 'friendships/:id', to: "friendships#create", as: :create_friendship
+  resources 'friendships', only: %i( destroy )
 end
