@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   get '/users', to: 'pages#users', as: :users
   post 'friendships/:id', to: "friendships#create", as: :create_friendship
-  resources 'friendships', only: %i( destroy )
+  resources 'friendships', only: %i( index destroy )
 end
