@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Generating 5 users"
+User.destroy_all
 
 User.create!(email:"babi@padovani.com", password: 123456)
 User.create!(email:"lea@troina.com", password: 123456)
