@@ -6,6 +6,6 @@ class FriendshipPolicy < ApplicationPolicy
   end
 
   def create?
-    Friendship.where(user_id: record.user_id, friend_id: record.friend_id).nil? 
+    Friendship.where(user_id: record.user_id, friend_id: record.friend_id).empty? 
   end
 end

@@ -7,8 +7,8 @@
         <%= user.email %> - <%= link_to 'Add Friend', create_friendship_path(user.id), method: 'POST' %>
       </li>
     <% else %>
-            <li>
-        <%= user.email %> - <%= link_to 'Remove Friend', create_friendship_path(user.id), method: 'DELETE' %>
+      <li>
+        <%= user.email %> YOU ARE FRIENDS!
       </li>
     <% end %>
   <% end %>
