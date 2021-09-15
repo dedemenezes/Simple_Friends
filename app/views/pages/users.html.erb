@@ -8,10 +8,13 @@
       </li>
     <% else %>
       <li>
-        <%= user.email %> YOU ARE FRIENDS!
+        <%= user.email %> is now your friend! -> <%= 
+          link_to  "remove friend",
+          friendship_path(Friendship.where("user_id = ? AND friend_id = ? OR user_id = ? AND friend_id = ?", current_user, user, user, current_user).first),
+          method: 'DELETE'
+        %>
       </li>
     <% end %>
   <% end %>
 </ul>
-<%= link_to 'Check your friends', friendships_path %>
-<%= link_to  "Home", root_path %>
+<%= link_to 'Check your friends', friendships_path(current_user.id) %>

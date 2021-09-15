@@ -1,8 +1,17 @@
 <h1>Your friends</h1>
 <ul>
-  <% current_user.friendships.each do |f| %>
-  <li>
-    <%= f.friend.email %>
-  </li>
+  <% @friendships.each do |f| %>
+    <% if f.friend == current_user %>
+      <li>
+        <%= f.user.email %> - <%= link_to  "remove", friendship_path(f), method: 'DELETE' %>
+      </li>
+    <% else %>
+      <li>
+        <%= f.friend.email %> - <%= link_to  "remove", friendship_path(f), method: 'DELETE' %>
+      </li>
+    <% end %>
+      
   <% end %>
 </ul>
+
+<%= link_to  "Home", root_path %>

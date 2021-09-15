@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
 
   def index
-    @friendships = current_user.friendships
+    @friendships = policy_scope(Friendship)
   end
 
   def create
@@ -13,6 +13,18 @@ class FriendshipsController < ApplicationController
     else
       redirect_to root_path
       flash[:alert] = "Friendship not created"
+    end
+  end
+
+  def destroy
+    @friendship = Friendship.find(params[:id])
+    authorize @friendship
+    if @friendship.destroy
+      flash[:notice] = "Friendship removed"
+      redirect_to request.referrer
+    else
+      render :index
+      flash[:alert] = "Friendship not removed"
     end
   end
 end
